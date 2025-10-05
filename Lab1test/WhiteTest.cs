@@ -1,162 +1,96 @@
-﻿namespace Lab1_test
+namespace Lab1
 {
-    [TestClass]
-    public sealed class WhiteTest
+    public class White
     {
-        Lab1.White main = new Lab1.White();
-        const double E = 0.0001;
+        public bool Task1(double d)
+        {
+            bool answer = false;
 
-        [TestMethod]
-        public void Test1()
-        {
-            // Arrange
-            var input = new double[] { 0, 1.5, 1, 3, -1, -2.3, 0.78, -0.3};
-            var answer = new bool[] { false, true, true, true, false, false, true, false };
-            var test = new bool[answer.Length];
-            // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
-                test[i] = main.Task1(input[i]);
-            }
-            // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
-                Assert.AreEqual(answer[i], test[i]);
-            }
+            // code here
+            answer = d > 0;
+            // end
+
+            return answer;
         }
-        [TestMethod]
-        public void Test2()
+
+        public bool Task2(int n)
         {
-            // Arrange
-            var input = new int[] { 0, 5, 2, -3, -2, 11, 22, -31, -418 };
-            var answer = new bool[] { true, false, true, false, true, false, true, false, true };
-            var test = new bool[answer.Length];
-            // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
-                test[i] = main.Task2(input[i]);
-            }
-            // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
-                Assert.AreEqual(answer[i], test[i]);
-            }
+            bool answer = false;
+
+            // code here
+            answer = n % 2 == 0;
+            // end
+
+            return answer;
         }
-        [TestMethod]
-        public void Test3()
+
+        public int Task3(int a, int b)
         {
-            // Arrange
-            var input = new int[] { 0, 1, 5, -2, 2, -1, 13, -13, 30 };
-            var answer = new int[] { 1, 5, 5, 2, 2, 13, 13, 30, 30 };
-            var test = new double[answer.Length];
-            // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
-                test[i] = main.Task3(input[i], input[(i+1)%input.Length]);
-            }
-            // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
-                Assert.AreEqual(answer[i], test[i]);
-            }
+            int answer = 0;
+
+            // code here
+            answer = (Math.Abs(a) > Math.Abs(b)) ? a : b;
+            // end
+
+            return answer;
         }
-        [TestMethod]
-        public void Test4()
+
+        public double Task4(double d, double f)
         {
-            // Arrange
-            var input = new int[] { 0, 1, 5, -2, 2, -1, 13, -13, 30 };
-            var answer = new double[] { 0, 1, -2, -2, -1, -1, 13, -13, 0};
-            var test = new double[answer.Length];
-            // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
-                test[i] = main.Task4(input[i], input[(i + 1) % input.Length]);
-            }
-            // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
-                Assert.AreEqual(answer[i], test[i], E);
-            }
+            double answer = 0;
+
+            // code here
+            answer = (Math.Abs(d) < Math.Abs(f)) ? d : f;
+            // end
+
+            return answer;
         }
-        [TestMethod]
-        public void Test5()
+
+        public double Task5(double x)
         {
-            // Arrange
-            var input = new double[] { 0, 1.5, 1, 3, -1, -2.3, 0.78, -0.3 };
-            var answer = new double[] { 0, 1, 1, 1, -1, 1, 0.78, -0.3 };
-            var test = new double[answer.Length];
-            // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
-                test[i] = main.Task5(input[i]);
-            }
-            // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
-                Assert.AreEqual(answer[i], test[i]);
-            }
+            double answer = 0;
+
+            // code here
+            if (Math.Abs(x) > 1)
+                answer = 1;
+            else
+                answer = x;
+            // end
+
+            return answer;
         }
-        [TestMethod]
-        public void Test6()
+
+        public bool Task6(double x, double y, double r)
         {
-            // Arrange
-            var input = new double[,] {
-                { 0, 1.5, 1, 1, -1, 3, -1, -2.3, 2, 1 },
-                { 0, 2.3, -1, -1, 1, 0.01, 1.23, -3.2, 1, 0 },
-                { 0, 1, 1, 0.5, 1.5, 3, 2, 2.5, 1, 1 }
-            };
-            var answer = new bool[] { true, false, false, false, false, true, false, false, false, true };
-            var test = new bool[answer.Length];
-            // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
-                test[i] = main.Task6(input[0, i], input[1, i], input[2, i]);
-            }
-            // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
-                Assert.AreEqual(answer[i], test[i]);
-            }
+            bool answer = false;
+
+            // code here
+            answer = Math.Abs(x * x + y * y - r * r) <= 1e-4;
+            // end
+
+            return answer;
         }
-        [TestMethod]
-        public void Test7()
+
+        public bool Task7(int n)
         {
-            // Arrange
-            var input = new int[] { 0, 5, 2, -3, -2, 11, 22, -31, -418 };
-            var answer = new bool[] { false, false, false, false, true, false, true, false, true };
-            var test = new bool[answer.Length];
-            // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
-                test[i] = main.Task7(input[i]);
-            }
-            // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
-                Assert.AreEqual(answer[i], test[i]);
-            }
+            bool answer = false;
+
+            // code here
+            answer = n % 22 == 0;
+            // end
+
+            return answer;
         }
-        [TestMethod]
-        public void Test8()
+
+        public bool Task8(double L, int T, int M)
         {
-            // Arrange
-            var input = new double[,] {
-                { 0, 1.5, 10, 10, 10, 30, 30, 30.1, 78, 29.9 },
-                { 0, 6, 1, 5, 5, 3, 3, 5, 4, 4 },
-                { 0, 1, 1, 1, 2, 3, 4, 4, 4, 4 }
-            };
-            var answer = new bool[] { false, false, false, false, true, false, true, false, false };
-            var test = new bool[answer.Length];
-            // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
-                test[i] = main.Task8(input[0, i], (int)input[1, i], (int)input[2, i]);
-            }
-            // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
-                Assert.AreEqual(answer[i], test[i]);
-            }
+            bool answer = false;
+
+            // code here
+            answer = (L == 10 && T == 5 && M == 2) || (L == 30 && T == 3 && M == 4);
+            // end
+
+            return answer;
         }
     }
 }
